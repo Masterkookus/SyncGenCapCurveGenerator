@@ -64,7 +64,7 @@ trip_labels=['5s Trip ' + str(int(Qlim[0]/1e3)) + ' kVAR (' + str(int(Qlim[0]/(c
              '0.1s Trip ' + str(int(Qlim[3]/1e3)) + ' kVAR (' + str(int(Qlim[3]/(ctr*ptr))) + ' VAR sec)']
 
 # Load parameters
-Pload       = 1500e3      # Load that is being supplied by the generator, in watt
+#Pload       = 1500e3      # Load that is being supplied by the generator, in watt
 
 # Generator's Losses
 Pmech_loss  = 1.5e3     # Mechanical (friction and windage) Losses, in watt
@@ -93,7 +93,7 @@ Ea              = Vphase + 1j * Xsync * Iarm_max_phasor
 D_E             = (3 * abs(Ea) * Vphase)/Xsync
 
 # Prime-mover maximum output real power, in watt
-Pmax_out        = Pload - Pmech_loss - Pcore_loss
+Pmax_out        = Rmax - Pmech_loss - Pcore_loss
 
 # Stator current limit curve
 # A circle centered in (0,0) with radius Srated
@@ -227,7 +227,7 @@ fig.text(0.1, 0.945, 'Voltage: '+str(np.round(Vterminal,1))+'V', fontsize=8)
 fig.text(0.1, 0.925, 'Poles: '+str(int(poles)), fontsize=8)
 fig.text(0.1, 0.905, 'Power Factor : '+str(PowerFactor), fontsize=8)
 fig.text(0.25, 0.965, 'Synchronous Reactance: '+str(Xsync), fontsize=8)
-fig.text(0.25, 0.945, 'Max Power: '+str(np.round(Rmax/1e3,1))+'kVA', fontsize=8)
+fig.text(0.25, 0.945, 'Max Power: '+str(np.round(Rmax/1e3,1))+'kW', fontsize=8)
 fig.text(0.25, 0.925, 'Full Load Current: '+str(np.round(Ifl,1))+'A', fontsize=8)
 fig.text(0.6, 0.965, 'PT Ratio: ' + str(ptr), fontsize=8)
 fig.text(0.6, 0.945, 'CT Ratio: ' + str(ctr), fontsize=8)
