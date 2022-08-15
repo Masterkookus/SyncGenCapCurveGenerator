@@ -22,7 +22,7 @@ Along with several mathematical and programming ideas that will be cited when ap
 - Júlia Avellar ()
 
 ## Modified by
-- Jason Cheers
+- Jason Cheers (Edits in gen_capcurve.py, original jupter code unmodified)
 
 ## Version history
 ### Version 0.1 (2021-12-09):
