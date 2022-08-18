@@ -48,13 +48,19 @@ Srated      = 1700e3      # Rated apparent power, in volt-ampere
 poles       = 4         # Number of poles
 PowerFactor = 0.8       # Power factor, lagging (inductive)
 Xsync       = 0.4882         # Synchronous reactance, in ohm per phase
+
+# Maximum Load parameters
+Pload       = 1360e3      # Nameplate maximum load of generator, in watt
+
 ### PT/CT Ratios ###
 ctr=500
 ptr=2.31
+
 ### PQ max and Q Min ###
 Rmax        = 1500e3        # Max of P or Q
 Qmin        = -0.4*Srated   #Min Value of Q
 Ifl         = Srated/(Vterminal*np.sqrt(3))
+
 #Show Reverse VAR tripping times and zones
 show_Qlim   = [1,1,1,1] #Specify which tripping curves to show
 Qlim        = [Qmin,Qmin*1.25,Qmin*1.5,Qmin*2]
@@ -62,9 +68,6 @@ trip_labels=['5s Trip ' + str(int(Qlim[0]/1e3)) + ' kVAR (' + str(int(Qlim[0]/(c
              '1s Trip ' + str(int(Qlim[1]/1e3)) + ' kVAR (' + str(int(Qlim[1]/(ctr*ptr))) + ' VAR sec)',
              '0.2s Trip ' + str(int(Qlim[2]/1e3)) + ' kVAR (' + str(int(Qlim[2]/(ctr*ptr))) + ' VAR sec)',
              '0.1s Trip ' + str(int(Qlim[3]/1e3)) + ' kVAR (' + str(int(Qlim[3]/(ctr*ptr))) + ' VAR sec)']
-
-# Load parameters
-#Pload       = 1500e3      # Load that is being supplied by the generator, in watt
 
 # Generator's Losses
 Pmech_loss  = 1.5e3     # Mechanical (friction and windage) Losses, in watt
@@ -93,7 +96,7 @@ Ea              = Vphase + 1j * Xsync * Iarm_max_phasor
 D_E             = (3 * abs(Ea) * Vphase)/Xsync
 
 # Prime-mover maximum output real power, in watt
-Pmax_out        = Rmax - Pmech_loss - Pcore_loss
+Pmax_out        = Pload - Pmech_loss - Pcore_loss
 
 # Stator current limit curve
 # A circle centered in (0,0) with radius Srated
